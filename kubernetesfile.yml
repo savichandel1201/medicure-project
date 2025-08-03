@@ -2,20 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: insureme
+  name: medicure
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: insureme
+      app: medicure
   template:
     metadata:
       labels:
-        app: insureme
+        app: medicure
     spec:
       containers:
-        - name: insurance
-          image: vikuldocker/insurance-monday:latest
+        - name: medicure
+          image: savi1201/medicure:1.0
           ports:
             - containerPort: 8082
           env:
@@ -25,11 +25,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: insureme
+  name: medicure
 spec:
   type: NodePort
   ports:
     - port: 8082
       targetPort: 8082
   selector:
-    app: insureme
+    app: medicure
